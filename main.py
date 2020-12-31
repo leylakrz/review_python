@@ -3,6 +3,7 @@ import csv
 import urllib.request
 
 from extended_list import ExtendedList
+from connect_db import *
 
 iris_lst = []
 
@@ -15,5 +16,16 @@ for line in csv_file:
     iris_lst.append(ExtendedList(line))
 
 iris_lst.pop(0)
+iris_lst2 = []
 for elem in iris_lst:
-    print(elem.lst)
+    lst2 = []
+    it = iter(ExtendedList.next_val(elem.lst))
+    while True:
+        try:
+            lst2.append(next(it))
+        except StopIteration:
+            break
+    iris_lst2.append(ExtendedList(lst2))
+
+    # insert(tuple(lst2))
+select_all()

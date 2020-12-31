@@ -32,7 +32,10 @@ class ExtendedList(list):
     @staticmethod
     def next_val(lst):
         for num in lst:
-            yield num
+            try:
+                yield float(num)
+            except ValueError:
+                yield num
 
 
 class TypeList(ExtendedList):
@@ -47,17 +50,18 @@ class TypeList(ExtendedList):
         return False
 
 
-lst1 = ExtendedList([0, 1, 2])
-lst2 = ExtendedList([0, 1, 3, 2])
-print(lst1 == lst2)
-print(lst1 < lst2)
-print(lst1 <= lst2)
-
-print(lst1 + lst2)
-
-lst3 = TypeList([1, 2])
-print(lst3 == lst2)
-
+# lst1 = ExtendedList([0, 1, 2])
+# lst2 = ExtendedList([0, 1, 3, 2])
+# print(lst1 == lst2)
+# print(lst1 < lst2)
+# print(lst1 <= lst2)
+#
+# print(lst1 + lst2)
+#
+# lst3 = TypeList([1, 2])
+# print(lst3 == lst2)
+#
+# lst2 = ExtendedList([0, 1, 3, 2])
 # next_val = ExtendedList.next_val(lst2.lst)
 # while True:
 #     try:
